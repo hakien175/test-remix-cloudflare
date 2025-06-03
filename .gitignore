@@ -3,6 +3,6 @@ node_modules
 /.cache
 /build
 .env
-app/styles/global.css
-app/styles/global.css.map
+.dev.vars
 
+.wrangler

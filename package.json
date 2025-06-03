@@ -1,29 +1,27 @@
 {
-  "name": "my-abcya-clone",
+  "name": "my-remix-app",
   "private": true,
   "sideEffects": false,
   "type": "module",
   "scripts": {
-    "build": "npm run build:css && remix vite:build",
-    "dev": "npm run build:css && remix vite:dev",
+    "build": "remix vite:build",
+    "deploy": "wrangler pages deploy ./build/client",
+    "dev": "remix vite:dev",
     "lint": "eslint --ignore-path .gitignore --cache --cache-location ./node_modules/.cache/eslint .",
-    "start": "remix-serve ./build/server/index.js",
+    "start": "wrangler pages dev ./build/client",
     "typecheck": "tsc",
-    "build:css": "sass app/styles/global.scss:app/styles/global.css --style compressed",
-    "watch:css": "sass app/styles/global.scss:app/styles/global.css --watch "
+    "typegen": "wrangler types"
   },
   "dependencies": {
-    "@remix-run/node": "^2.16.8",
+    "@remix-run/cloudflare": "^2.16.8",
+    "@remix-run/cloudflare-pages": "^2.16.8",
     "@remix-run/react": "^2.16.8",
-    "@remix-run/serve": "^2.16.8",
-    "dotenv": "^16.3.1",
     "isbot": "^4.1.0",
-    "mysql2": "^3.6.1",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "sass": "^1.89.1"
+    "react-dom": "^18.2.0"
   },
   "devDependencies": {
+    "@cloudflare/workers-types": "^4.20240512.0",
     "@remix-run/dev": "^2.16.8",
     "@types/react": "^18.2.20",
     "@types/react-dom": "^18.2.7",
@@ -40,7 +38,8 @@
     "tailwindcss": "^3.4.4",
     "typescript": "^5.1.6",
     "vite": "^6.0.0",
-    "vite-tsconfig-paths": "^4.2.1"
+    "vite-tsconfig-paths": "^4.2.1",
+    "wrangler": "3.57.1"
   },
   "engines": {
     "node": ">=20.0.0"
